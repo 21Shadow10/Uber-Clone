@@ -38,7 +38,8 @@ const RideSelector = ({pickupCoordinates, dropoffCoordinates}) => {
           `https://api.mapbox.com/directions/v5/mapbox/driving/${pickupCoordinates[0]},${pickupCoordinates[1]};${dropoffCoordinates[0]},${dropoffCoordinates[1]}?access_token=pk.eyJ1IjoiMjFzaGFkb3cxMCIsImEiOiJja3Zuczl1ZTI5dDk2Mm5zNzg3ZzM5YWdqIn0.DVBeamJaU1p6HNAei_vS-A`
         ).then(response => response.json())
          .then(data => {
-          setRideDuration(data.routes[0].duration)
+           console.log(data.routes[0].distance)
+          setRideDuration(data.routes[0].distance)
          })
       }, [pickupCoordinates, dropoffCoordinates])
 
@@ -56,7 +57,7 @@ const RideSelector = ({pickupCoordinates, dropoffCoordinates}) => {
                             <Service>{car.service}</Service>
                             <Time>5 mins away...</Time>
                         </CarDetails>
-                        <Price>₹{(rideDuration*car.multiplier/20).toFixed(2)}</Price>
+                        <Price>₹{(rideDuration*car.multiplier/50).toFixed(2)}</Price>
                     </Car>
                 )) }
                 
